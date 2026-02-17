@@ -1,0 +1,39 @@
+/* Journey Page */
+.journey-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #243b55, #141e30);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 20%);
+    padding: 2rem;
+    text-align: center;
+}
+
+.journey-slide {
+    max-width: 600px;
+}
+
+.journey-icon {
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.journey-text {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    /* A more "literary" font if available, or fallback */
+}
+
+.journey-subtext {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    letter-spacing: 1px;
+}

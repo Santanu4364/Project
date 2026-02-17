@@ -1,0 +1,138 @@
+/* Refined Celebration Styles */
+.celebration-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: transparent;
+    /* Allows Sakura to show through */
+}
+
+.celebration-card {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 3rem 2rem;
+    border-radius: 4px;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    /* Subtle Gold Border */
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Elegant ornamental corners */
+.celebration-card::before,
+.celebration-card::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid transparent;
+    transition: all 0.5s;
+}
+
+.celebration-card::before {
+    top: 10px;
+    left: 10px;
+    border-top-color: var(--gold);
+    border-left-color: var(--gold);
+}
+
+.celebration-card::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom-color: var(--gold);
+    border-right-color: var(--gold);
+}
+
+.ashoka-emblem-container {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.emblem-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.celebration-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.celebration-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 2rem;
+}
+
+.celebration-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    opacity: 0.6;
+}
+
+.celebration-divider .line {
+    height: 1px;
+    width: 50px;
+    background: var(--gold);
+}
+
+.celebration-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e2e8f0;
+    margin-bottom: 2.5rem;
+}
+
+.highlight-text {
+    margin-top: 1.5rem;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.quote-container {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.final-quote {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+    .celebration-card {
+        padding: 2rem 1rem;
+    }
+
+    .celebration-title {
+        font-size: 2rem;
+    }
+
+    .celebration-message {
+        font-size: 1rem;
+    }
+}
