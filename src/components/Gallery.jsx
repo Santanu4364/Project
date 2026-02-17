@@ -23,7 +23,7 @@ const Gallery = () => {
                     </motion.div>
                 ))}
             </div>
-            <p className="gallery-note">"Collecting moments, organized by date."</p>
+            <p className="gallery-note">"No photos live here; the memories of a true friendship were simply too alive to be captured."</p>
         </section>
     );
 };

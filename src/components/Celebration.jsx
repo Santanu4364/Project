@@ -1,53 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { BookOpenText, Landmark, Sparkles } from 'lucide-react';
+import AshokaChakra from './AshokaChakra';
 
 const Celebration = () => {
-    return (
-        <section className="celebration-section">
-            <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="celebration-card"
-            >
-                <motion.div
-                    className="ashoka-emblem-container"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                    <img src="/birthday-wisher/assets/lbsnaa.png" alt="Emblem" className="emblem-img" />
-                </motion.div>
+  const [showFallback, setShowFallback] = useState(false);
 
-                <h1 className="celebration-title">Happy Birthday</h1>
-                <h2 className="celebration-subtitle">Future IPS Officer</h2>
+  return (
+    <section className="upsc-finale-section">
+      <div className="upsc-finale-glow upsc-finale-glow-top" aria-hidden="true" />
+      <div className="upsc-finale-glow upsc-finale-glow-bottom" aria-hidden="true" />
 
-                <div className="celebration-divider">
-                    <Star size={12} color="#ffd700" fill="#ffd700" />
-                    <div className="line"></div>
-                    <Star size={12} color="#ffd700" fill="#ffd700" />
-                </div>
+      <motion.article
+        className="upsc-finale-card"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.85, ease: 'easeOut' }}
+      >
+        <div className="upsc-finale-tag">
+          <Landmark size={16} />
+          <span>UPSC Dream</span>
+        </div>
 
-                <div className="celebration-message">
-                    <p>
-                        To the one who studies while the world sleeps,<br />
-                        May your determination shine brighter than any candle.
-                    </p>
-                    <p className="highlight-text">
-                        Your journey from <strong>Delhi</strong> to <strong>LBSNAA</strong><br />
-                        is written in the stars.
-                    </p>
-                </div>
+        <motion.div
+          className="upsc-finale-emblem"
+          animate={{ y: [0, -6, 0], rotate: [0, 1.2, 0, -1.2, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          {showFallback ? (
+            <AshokaChakra size={86} opacity={0.9} />
+          ) : (
+            <img
+              src="/birthday-wisher/assets/national-emblem-india.png"
+              alt="National Emblem of India"
+              onError={() => setShowFallback(true)}
+            />
+          )}
+        </motion.div>
 
-                <div className="quote-container">
-                    <p className="final-quote">
-                        "Success is not final, failure is not fatal:<br />
-                        it is the courage to continue that counts."
-                    </p>
-                </div>
-            </motion.div>
-        </section>
-    );
+        <h1 className="upsc-finale-title">Happy Birthday</h1>
+        <h2 className="upsc-finale-subtitle">Future IPS Officer</h2>
+
+        <div className="upsc-finale-divider" aria-hidden="true">
+          <Sparkles size={14} />
+          <span />
+          <BookOpenText size={14} />
+          <span />
+          <Sparkles size={14} />
+        </div>
+
+        <p className="upsc-finale-message">
+          To the one who studies while the world sleeps,
+          <br />
+          May your determination shine brighter than any candle.
+        </p>
+
+        <p className="upsc-finale-journey">
+          Your journey from <strong>Delhi</strong> to <strong>LBSNAA</strong>
+          <br />
+          is written in the stars.
+        </p>
+
+        <blockquote className="upsc-finale-quote">
+          “Success is never the end, failure is never the collapse — what truly matters is the courage to keep moving.”
+        </blockquote>
+      </motion.article>
+    </section>
+  );
 };
 
 export default Celebration;

@@ -12,7 +12,7 @@ const timelineData = [
     {
         year: "Phase 2",
         title: "The Grind",
-        desc: "Endless nights, Laxmikanth, and the silence of 4 AM.",
+        desc: "Endless nights, Sea of Books, and the silence of 4 AM.",
         icon: <Coffee size={20} color="#1a1a2e" />
     },
     {

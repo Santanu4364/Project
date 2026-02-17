@@ -62,43 +62,95 @@ h3 {
   background-image: url('/birthday-wisher/assets/background.png');
   background-size: cover;
   background-position: center;
+  overflow: hidden;
+  /* Prevent glow from overflowing */
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), var(--primary));
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), var(--primary));
+  z-index: 1;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .hero-content {
   position: relative;
   z-index: 10;
   padding: 2rem;
+  max-width: 800px;
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
+  /* Increased size */
   margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #fff, #cbd5e1);
+  background: linear-gradient(to right, #fff, #e2e8f0, #cbd5e1);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  line-height: 1.1;
+  display: inline-block;
+}
+
+.hero-title span {
+  display: inline-block;
+  /* Required for transform animations on letters */
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--gold);
-  margin-bottom: 2rem;
-  letter-spacing: 2px;
+  margin-bottom: 3rem;
+  letter-spacing: 6px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.subtitle-decoration {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.hero-quote-container {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 0;
+}
+
+.quote-line {
+  height: 1px;
+  width: 100px;
+  background: linear-gradient(to right, transparent, var(--text-muted), transparent);
+  margin: 10px auto;
+  opacity: 0.5;
 }
 
 .hero-quote {
+  font-family: 'Playfair Display', serif;
+  /* Changed to serif for elegance */
   font-style: italic;
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: 1.4rem;
+  color: #e2e8f0;
+  line-height: 1.6;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .scroll-indicator {
@@ -109,8 +161,43 @@ h3 {
   align-items: center;
   gap: 8px;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   z-index: 10;
+  opacity: 0.8;
+}
+
+.chakra-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  /* Behind text but above overlay */
+  pointer-events: none;
+}
+
+/* Mobile Responsiveness for Hero */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    flex-wrap: wrap;
+  }
+
+  .hero-quote {
+    font-size: 1.1rem;
+  }
+
+  .hero-glow {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 /* Section Common */
@@ -172,6 +259,8 @@ h3 {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+  transform-origin: center;
 }
 
 .timeline-item.left .timeline-content {
@@ -230,12 +319,27 @@ h3 {
   align-items: center;
   border: 1px dashed var(--text-muted);
   color: var(--text-muted);
-  transition: all 0.3s;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+  transform-origin: center;
 }
 
 .gallery-placeholder:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--gold);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .timeline-content:hover,
+  .gallery-placeholder:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
+    border-color: rgba(251, 191, 36, 0.65);
+  }
+}
+
+.timeline-content:active,
+.gallery-placeholder:active {
+  transform: scale(0.985);
 }
 
 .gallery-note {
